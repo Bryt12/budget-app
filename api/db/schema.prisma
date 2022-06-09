@@ -62,4 +62,6 @@ model UsersToPlannedTransactions {
   plannedTransactionId Int
   createdAt            DateTime           @default(now())
   deleted              DateTime?
+
+  @@unique([userId, plannedTransactionId])
 }
