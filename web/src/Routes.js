@@ -11,10 +11,16 @@ import { Set, Router, Route } from '@redwoodjs/router'
 import TimeframesLayout from 'src/layouts/TimeframesLayout'
 import PlannedTransactionsLayout from 'src/layouts/PlannedTransactionsLayout'
 import CategoriesLayout from 'src/layouts/CategoriesLayout'
+import BudgetLayout from 'src/layouts/BudgetLayout'
 
 const Routes = () => {
   return (
     <Router>
+      <Route path="/login" page={LoginPage} name="login" />
+      <Route path="/signup" page={SignupPage} name="signup" />
+      <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
+      <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
+      <Route path="/create-planned-transaction" page={CreatePlannedTransactionPage} name="createPlannedTransaction" />
       <Set wrap={TimeframesLayout}>
         <Route path="/timeframes/new" page={TimeframeNewTimeframePage} name="newTimeframe" />
         <Route path="/timeframes/{id:Int}/edit" page={TimeframeEditTimeframePage} name="editTimeframe" />
@@ -32,6 +38,9 @@ const Routes = () => {
         <Route path="/categories/{id:Int}/edit" page={CategoryEditCategoryPage} name="editCategory" />
         <Route path="/categories/{id:Int}" page={CategoryCategoryPage} name="category" />
         <Route path="/categories" page={CategoryCategoriesPage} name="categories" />
+      </Set>
+      <Set wrap={BudgetLayout}>
+        <Route path="/" page={CreatePlannedTransactionPage} name="home" />
       </Set>
       <Route notfound page={NotFoundPage} />
     </Router>
